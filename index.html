@@ -3,35 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pluralo</title>
+<title>Pluralo | Webseiten &amp; Social Media für Unternehmen</title>
+<meta name="description" content="Pluralo entwickelt moderne Webseiten und Social-Media-Auftritte für Unternehmen, die online sichtbar werden und mehr Anfragen gewinnen möchten.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#06090b">
+<link rel="canonical" href="https://pluralo.de/">
+<meta property="og:locale" content="de_DE">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pluralo | Webseiten &amp; Social Media für Unternehmen">
+<meta property="og:description" content="Moderne Webseiten und Social-Media-Auftritte, die zusammenpassen und aus Sichtbarkeit echte Anfragen machen.">
+<meta property="og:url" content="https://pluralo.de/">
+<meta property="og:site_name" content="Pluralo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pluralo | Webseiten &amp; Social Media">
+<meta name="twitter:description" content="Webseiten und Social Media für Unternehmen, die online sichtbar werden möchten.">
+<link rel="icon" href="Bilder/logo.PNG" type="image/png">
 <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 <script src="script.js" defer></script>
-
-
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-        </script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "Cyey8UpF_6g3_3OEy",
-      });
-   })();</script>
-
-
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Pluralo",
+  "url": "https://pluralo.de/",
+  "logo": "https://pluralo.de/Bilder/logo.PNG",
+  "email": "kontakt@pluralo.de",
+  "telephone": "+49 176 79920971",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Mohrsmühlenweg 75",
+    "postalCode": "56626",
+    "addressLocality": "Andernach",
+    "addressCountry": "DE"
+  },
+  "sameAs": [
+    "https://www.instagram.com/pluralo.de/",
+    "https://www.linkedin.com/company/pluralo-de/"
+  ]
+}
+</script>
 </head>
 
 
 <body>
+<a class="skip-link" href="#main-content">Direkt zum Inhalt</a>
 
 <header>
   <nav>
     <div class="brand">
-      <img src="logo.PNG" alt="Pluralo Logo">
+      <img src="Bilder/logo.PNG" alt="Pluralo Logo" width="34" height="34">
       <span>Pluralo</span>
     </div>
-    <div class="nav-links">
+    <div class="nav-links" id="primaryNav">
       <a href="#leistungen">Leistungen</a>
       <a href="#arbeit">Arbeitsweise</a>
       <a href="#warum-pluralo">Warum wir</a>
@@ -39,11 +63,12 @@
     </div>
     <div class="nav-actions">
       <a class="btn btn-primary" href="#kontakt">Erstgespräch sichern</a>
-      <button class="burger" id="burgerBtn" aria-label="Menü öffnen">☰</button>
+      <button class="burger" id="burgerBtn" type="button" aria-label="Menü öffnen" aria-controls="primaryNav" aria-expanded="false"><span aria-hidden="true">☰</span></button>
     </div>
   </nav>
 </header>
 
+<main id="main-content">
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -176,59 +201,60 @@
       <span class="eyebrow">Kontakt</span>
       <h2>Lassen Sie uns sprechen.</h2>
       <p>Schreiben Sie uns kurz, worum es geht, wir melden uns in der Regel innerhalb von 24 Stunden mit einem Terminvorschlag.</p>
-      <div class="info-row"><span class="lbl">E-Mail</span><span>kontakt@pluralo.de</span></div>
-      <div class="info-row"><span class="lbl">Telefon</span><span>+49 176 79920971</span></div>
+      <div class="info-row"><span class="lbl">E-Mail</span><a href="mailto:kontakt@pluralo.de">kontakt@pluralo.de</a></div>
+      <div class="info-row"><span class="lbl">Telefon</span><a href="tel:+4917679920971">+49 176 79920971</a></div>
       <div class="info-row"><span class="lbl">Standort</span><span>Andernach, Rheinland-Pfalz</span></div>
     </div>
 
     <form id="contactForm" novalidate>
       <div class="field" data-field="name">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Ihr Name">
-        <span class="err">Bitte geben Sie Ihren Namen ein.</span>
+        <input type="text" id="name" name="name" placeholder="Ihr Name" autocomplete="name" required aria-describedby="nameError">
+        <span class="err" id="nameError">Bitte geben Sie Ihren Namen ein.</span>
       </div>
       <div class="field" data-field="email">
         <label for="email">E-Mail</label>
-        <input type="email" id="email" name="email" placeholder="Ihre E-Mail Adresse">
-        <span class="err">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
+        <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" autocomplete="email" inputmode="email" required aria-describedby="emailError">
+        <span class="err" id="emailError">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
       </div>
       <div class="field" data-field="company">
         <label for="company">Unternehmen (optional)</label>
-        <input type="text" id="company" name="company" placeholder="Ihr Unternehmen">
+        <input type="text" id="company" name="company" placeholder="Ihr Unternehmen" autocomplete="organization">
       </div>
       <div class="field" data-field="subject">
         <label for="subject">Betreff</label>
-        <input type="text" id="subject" name="subject" placeholder="Worum geht es kurz gesagt?">
-        <span class="err">Bitte geben Sie einen Betreff ein.</span>
+        <input type="text" id="subject" name="subject" placeholder="Worum geht es kurz gesagt?" required aria-describedby="subjectError">
+        <span class="err" id="subjectError">Bitte geben Sie einen Betreff ein.</span>
       </div>
       <div class="field" data-field="message">
         <label for="message">Nachricht</label>
-        <textarea id="message" name="message" placeholder="Worum geht es?"></textarea>
-        <span class="err">Bitte schreiben Sie uns eine kurze Nachricht.</span>
+        <textarea id="message" name="message" placeholder="Worum geht es?" required aria-describedby="messageError"></textarea>
+        <span class="err" id="messageError">Bitte schreiben Sie uns eine kurze Nachricht.</span>
       </div>
       <div class="field field-consent" data-field="consent">
         <label class="consent-label">
-          <input type="checkbox" id="consent" name="consent">
-          <span>Ich habe die <a href="#" id="datenschutzLinkInline">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage einverstanden.</span>
+          <input type="checkbox" id="consent" name="consent" required aria-describedby="consentError">
+          <span>Ich habe die <a href="#datenschutzBox" id="datenschutzLinkInline">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage einverstanden.</span>
         </label>
-        <span class="err">Bitte stimmen Sie der Datenschutzerklärung zu.</span>
+        <span class="err" id="consentError">Bitte stimmen Sie der Datenschutzerklärung zu.</span>
       </div>
       <button type="submit" class="btn btn-primary form-submit">Nachricht senden</button>
-      <p class="form-success" id="formSuccess">Danke! Ihre Nachricht ist angekommen, wir melden uns in Kürze.</p>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <div class="brand"><img src="logo.png" alt="Pluralo Logo"><span>Pluralo</span></div>
+      <div class="brand"><img src="Bilder/logo.PNG" alt="Pluralo Logo" width="34" height="34"><span>Pluralo</span></div>
       <div class="foot-links">
         <a href="#leistungen">Leistungen</a>
         <a href="#warum-pluralo">Warum wir</a>
         <a href="#kontakt">Kontakt</a>
-        <a href="#" id="impressumLink">Impressum</a>
-        <a href="#" id="datenschutzLink">Datenschutz</a>
+        <a href="#impressumBox" id="impressumLink">Impressum</a>
+        <a href="#datenschutzBox" id="datenschutzLink">Datenschutz</a>
       </div>
       <div class="foot-social">
         <a href="https://www.instagram.com/pluralo.de/" target="_blank" rel="noopener noreferrer" aria-label="Pluralo auf Instagram">
@@ -256,7 +282,7 @@
 
     <div class="impressum-box" id="impressumBox">
       <h2>Impressum</h2>
-      <h3>Angaben gemäß § 5 TMG</h3>
+      <h3>Angaben gemäß § 5 DDG</h3>
       <p class="placeholder">Pluralo<br>Mohrsmühlenweg 75<br>56626 Andernach</p>
       <h3>Vertreten durch</h3>
       <p class="placeholder">Runi Ahmad</p>
@@ -264,7 +290,7 @@
       <p class="placeholder">impressum@pluralo.de<br>+49 176 79920971</p>
       <h3>Umsatzsteuer</h3>
       <p class="placeholder">Gemäß § 19 Abs. 1 UStG wird keine Umsatzsteuer erhoben (Kleinunternehmerregelung).</p>
-      <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+      <h3>Verantwortlich für journalistisch-redaktionelle Inhalte gemäß § 18 Abs. 2 MStV</h3>
       <p class="placeholder">Runi Ahmad<br>Mohrsmühlenweg 75<br>56626 Andernach</p>
     </div>
 
