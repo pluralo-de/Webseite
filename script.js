@@ -15,14 +15,28 @@ if ('IntersectionObserver' in window) {
   revealEls.forEach((element) => element.classList.add('in'));
 }
 
+const legalBoxes = [
+  document.getElementById('impressumBox'),
+  document.getElementById('datenschutzBox')
+].filter(Boolean);
+
+function setToggleBoxState(boxElement, isOpen) {
+  if (!boxElement) return;
+  boxElement.classList.toggle('show', isOpen);
+  document.querySelectorAll(`[aria-controls="${boxElement.id}"]`).forEach((link) => {
+    link.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+
 function setupToggleBox(linkElement, boxElement) {
   if (!linkElement || !boxElement) return;
 
+  linkElement.setAttribute('aria-controls', boxElement.id);
   linkElement.setAttribute('aria-expanded', 'false');
   linkElement.addEventListener('click', (event) => {
     event.preventDefault();
-    const isOpen = boxElement.classList.toggle('show');
-    linkElement.setAttribute('aria-expanded', String(isOpen));
+    const isOpen = !boxElement.classList.contains('show');
+    legalBoxes.forEach((box) => setToggleBoxState(box, box === boxElement && isOpen));
 
     if (isOpen) {
       boxElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -37,6 +51,15 @@ const datenschutzBox = document.getElementById('datenschutzBox');
 setupToggleBox(document.getElementById('impressumLink'), impressumBox);
 setupToggleBox(document.getElementById('datenschutzLink'), datenschutzBox);
 setupToggleBox(document.getElementById('datenschutzLinkInline'), datenschutzBox);
+
+function openLegalBoxFromHash() {
+  const box = legalBoxes.find((element) => `#${element.id}` === window.location.hash);
+  if (!box) return;
+  legalBoxes.forEach((element) => setToggleBoxState(element, element === box));
+}
+
+openLegalBoxFromHash();
+window.addEventListener('hashchange', openLegalBoxFromHash);
 
 const form = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
@@ -74,6 +97,13 @@ if (form) {
     const subject = document.getElementById('subject');
     const message = document.getElementById('message');
     const consent = document.getElementById('consent');
+    const website = document.getElementById('website');
+
+    if (website?.value) {
+      form.classList.add('sent');
+      setFormStatus('Danke! Ihre Nachricht ist angekommen. Wir melden uns in Kürze.', 'success');
+      return;
+    }
 
     const checks = [
       setFieldValidity(name?.closest('.field'), Boolean(name && name.value.trim().length > 1)),
@@ -150,16 +180,29 @@ async function sendMail({ name, email, company, subject, message }) {
   submitButton.textContent = 'Wird gesendet …';
   setFormStatus('Ihre Nachricht wird gesendet.');
 
-  try {
-    if (!window.emailjs) throw new Error('Der E-Mail-Dienst konnte nicht geladen werden.');
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), 15000);
 
-    window.emailjs.init({ publicKey: 'Cyey8UpF_6g3_3OEy' });
-    await window.emailjs.send('service_g3rut4d', 'template_8dy5zsq', {
-      thema: subject,
-      name: company ? `${name} (${company})` : name,
-      email,
-      Nachricht: message
+  try {
+    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'omit',
+      referrerPolicy: 'strict-origin-when-cross-origin',
+      signal: controller.signal,
+      body: JSON.stringify({
+        service_id: 'service_g3rut4d',
+        template_id: 'template_8dy5zsq',
+        user_id: 'Cyey8UpF_6g3_3OEy',
+        template_params: {
+          thema: subject,
+          name: company ? `${name} (${company})` : name,
+          email,
+          Nachricht: message
+        }
+      })
     });
+    if (!response.ok) throw new Error(`EmailJS antwortete mit Status ${response.status}.`);
 
     form.classList.add('sent');
     setFormStatus('Danke! Ihre Nachricht ist angekommen. Wir melden uns in Kürze.', 'success');
@@ -168,5 +211,7 @@ async function sendMail({ name, email, company, subject, message }) {
     submitButton.disabled = false;
     submitButton.textContent = 'Nachricht senden';
     setFormStatus('Die Nachricht konnte gerade nicht gesendet werden. Bitte schreiben Sie uns direkt an kontakt@pluralo.de.', 'error');
+  } finally {
+    window.clearTimeout(timeoutId);
   }
 }
