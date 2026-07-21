@@ -282,12 +282,12 @@
     .hero-ctas{ flex-direction:column; align-items:stretch; }
     .hero-ctas .btn{ justify-content:center; }
 
-    /* Rescale the assembling logo blocks so the bounding box fits narrow viewports */
-    .hero-visual{ height:190px; margin-top:30px; }
-    .blk-a{ top:10px; left:46px; width:92px; height:92px; }
-    .blk-b{ top:34px; left:162px; width:54px; height:54px; }
-    .blk-c{ top:122px; left:22px; width:42px; height:42px; }
-    .blk-d{ top:110px; left:116px; width:98px; height:98px; }
+    /* Keep the desktop logo geometry intact and center the scaled composition. */
+    .hero-visual{ height:280px; margin-top:30px; }
+    .blk-a{ top:10px; left:calc(50% - 99.36px); width:154.08px; height:121.68px; }
+    .blk-b{ top:61.84px; left:calc(50% + 38.16px); width:85.68px; height:69.84px; }
+    .blk-c{ top:149.68px; left:calc(50% - 123.84px); width:85.68px; height:68.4px; }
+    .blk-d{ top:149.68px; left:calc(50% - 55.44px); width:154.08px; height:120.24px; }
 
     .chipbar{ padding:18px 0; }
     .chip{ font-size:0.82rem; }
