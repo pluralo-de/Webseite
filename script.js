@@ -1,107 +1,172 @@
-// Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el=>io.observe(el));
+document.documentElement.classList.add('js');
 
-  // Impressum / Datenschutz toggle boxes
-  function setupToggleBox(linkEl, boxEl){
-    if(!linkEl || !boxEl) return;
-    linkEl.addEventListener('click', (e)=>{
-      e.preventDefault();
-      boxEl.classList.toggle('show');
-      if(boxEl.classList.contains('show')){
-        boxEl.scrollIntoView({behavior:'smooth', block:'start'});
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
       }
     });
-  }
-  const impressumBox = document.getElementById('impressumBox');
-  const datenschutzBox = document.getElementById('datenschutzBox');
-  setupToggleBox(document.getElementById('impressumLink'), impressumBox);
-  setupToggleBox(document.getElementById('datenschutzLink'), datenschutzBox);
-  setupToggleBox(document.getElementById('datenschutzLinkInline'), datenschutzBox);
+  }, { threshold: 0.12 });
+  revealEls.forEach((element) => observer.observe(element));
+} else {
+  revealEls.forEach((element) => element.classList.add('in'));
+}
 
-  // Contact form validation + simulated submit
-  const form = document.getElementById('contactForm');
-  const successMsg = document.getElementById('formSuccess');
+function setupToggleBox(linkElement, boxElement) {
+  if (!linkElement || !boxElement) return;
 
-  function validateField(field, condition){
-    field.classList.toggle('invalid', !condition);
-    return condition;
-  }
+  linkElement.setAttribute('aria-expanded', 'false');
+  linkElement.addEventListener('click', (event) => {
+    event.preventDefault();
+    const isOpen = boxElement.classList.toggle('show');
+    linkElement.setAttribute('aria-expanded', String(isOpen));
 
-  form.addEventListener('submit', (e)=>{
-    e.preventDefault();
+    if (isOpen) {
+      boxElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      boxElement.setAttribute('tabindex', '-1');
+      boxElement.focus({ preventScroll: true });
+    }
+  });
+}
+
+const impressumBox = document.getElementById('impressumBox');
+const datenschutzBox = document.getElementById('datenschutzBox');
+setupToggleBox(document.getElementById('impressumLink'), impressumBox);
+setupToggleBox(document.getElementById('datenschutzLink'), datenschutzBox);
+setupToggleBox(document.getElementById('datenschutzLinkInline'), datenschutzBox);
+
+const form = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+function setFieldValidity(field, isValid) {
+  if (!field) return isValid;
+  field.classList.toggle('invalid', !isValid);
+  const control = field.querySelector('input, textarea');
+  if (control) control.setAttribute('aria-invalid', String(!isValid));
+  return isValid;
+}
+
+function setFormStatus(message, type = '') {
+  if (!formStatus) return;
+  formStatus.textContent = message;
+  formStatus.className = 'form-status';
+  if (type) formStatus.classList.add(type);
+}
+
+if (form) {
+  form.querySelectorAll('input, textarea').forEach((control) => {
+    control.addEventListener('input', () => {
+      const field = control.closest('.field');
+      if (field?.classList.contains('invalid')) setFieldValidity(field, control.checkValidity());
+    });
+  });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    setFormStatus('');
+
     const name = document.getElementById('name');
     const email = document.getElementById('email');
+    const company = document.getElementById('company');
     const subject = document.getElementById('subject');
     const message = document.getElementById('message');
     const consent = document.getElementById('consent');
 
-    const nameOk = validateField(name.closest('.field'), name.value.trim().length > 1);
-    const emailOk = validateField(email.closest('.field'), /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()));
-    const subjectOk = validateField(subject.closest('.field'), subject.value.trim().length > 1);
-    const msgOk = validateField(message.closest('.field'), message.value.trim().length > 5);
-    const consentOk = validateField(consent.closest('.field'), consent.checked);
+    const checks = [
+      setFieldValidity(name?.closest('.field'), Boolean(name && name.value.trim().length > 1)),
+      setFieldValidity(email?.closest('.field'), Boolean(email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()))),
+      setFieldValidity(subject?.closest('.field'), Boolean(subject && subject.value.trim().length > 1)),
+      setFieldValidity(message?.closest('.field'), Boolean(message && message.value.trim().length > 5)),
+      setFieldValidity(consent?.closest('.field'), Boolean(consent?.checked))
+    ];
 
-    if(nameOk && emailOk && subjectOk && msgOk && consentOk){
-      sendMail(name.value, email.value, document.getElementById('company').value, subject.value, message.value);
+    if (!checks.every(Boolean)) {
+      setFormStatus('Bitte prüfen Sie die markierten Felder.', 'error');
+      form.querySelector('.invalid input, .invalid textarea')?.focus();
+      return;
     }
-  });
 
-  // Mobile menu (simple: scroll to nav links via alert-free fallback)
-  const burgerBtn = document.getElementById('burgerBtn');
-  let mobileOpen = false;
-  burgerBtn.addEventListener('click', ()=>{
-    mobileOpen = !mobileOpen;
-    const navLinks = document.querySelector('.nav-links');
-    if(mobileOpen){
-      navLinks.style.display = 'flex';
-      navLinks.style.position = 'fixed';
-      navLinks.style.top = '68px';
-      navLinks.style.left = '0';
-      navLinks.style.right = '0';
-      navLinks.style.background = '#06090b';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.padding = '24px 32px';
-      navLinks.style.borderBottom = '1px solid var(--ink-line)';
-      navLinks.style.gap = '18px';
-    } else {
-      navLinks.removeAttribute('style');
-    }
-  });
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.addEventListener('click', ()=>{
-      if(mobileOpen){ mobileOpen=false; document.querySelector('.nav-links').removeAttribute('style'); }
+    await sendMail({
+      name: name.value.trim(),
+      email: email.value.trim(),
+      company: company.value.trim(),
+      subject: subject.value.trim(),
+      message: message.value.trim()
     });
   });
+}
 
+const burgerBtn = document.getElementById('burgerBtn');
+const primaryNav = document.getElementById('primaryNav');
 
+function closeMobileMenu({ restoreFocus = false } = {}) {
+  if (!burgerBtn || !primaryNav) return;
+  primaryNav.classList.remove('open');
+  document.body.classList.remove('menu-open');
+  burgerBtn.setAttribute('aria-expanded', 'false');
+  burgerBtn.setAttribute('aria-label', 'Menü öffnen');
+  burgerBtn.querySelector('span').textContent = '☰';
+  if (restoreFocus) burgerBtn.focus();
+}
 
-  function sendMail(name, email, company, subject, message) {
-    const submitBtn = form.querySelector('.form-submit');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gesendet...';
+function openMobileMenu() {
+  if (!burgerBtn || !primaryNav) return;
+  primaryNav.classList.add('open');
+  document.body.classList.add('menu-open');
+  burgerBtn.setAttribute('aria-expanded', 'true');
+  burgerBtn.setAttribute('aria-label', 'Menü schließen');
+  burgerBtn.querySelector('span').textContent = '×';
+  primaryNav.querySelector('a')?.focus();
+}
 
-    const parms = {
+burgerBtn?.addEventListener('click', () => {
+  const isOpen = burgerBtn.getAttribute('aria-expanded') === 'true';
+  if (isOpen) closeMobileMenu();
+  else openMobileMenu();
+});
+
+primaryNav?.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => closeMobileMenu());
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && burgerBtn?.getAttribute('aria-expanded') === 'true') {
+    closeMobileMenu({ restoreFocus: true });
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 920) closeMobileMenu();
+});
+
+async function sendMail({ name, email, company, subject, message }) {
+  const submitButton = form?.querySelector('.form-submit');
+  if (!form || !submitButton) return;
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Wird gesendet …';
+  setFormStatus('Ihre Nachricht wird gesendet.');
+
+  try {
+    if (!window.emailjs) throw new Error('Der E-Mail-Dienst konnte nicht geladen werden.');
+
+    window.emailjs.init({ publicKey: 'Cyey8UpF_6g3_3OEy' });
+    await window.emailjs.send('service_g3rut4d', 'template_8dy5zsq', {
       thema: subject,
       name: company ? `${name} (${company})` : name,
-      email: email,
+      email,
       Nachricht: message
-    };
+    });
 
-    emailjs.send('service_g3rut4d', 'template_8dy5zsq', parms).then(
-      () => {
-        form.classList.add('sent');
-        successMsg.classList.add('show');
-      },
-      (error) => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Nachricht senden';
-        alert('Beim Senden ist ein Fehler aufgetreten: ' + JSON.stringify(error));
-      }
-    );
+    form.classList.add('sent');
+    setFormStatus('Danke! Ihre Nachricht ist angekommen. Wir melden uns in Kürze.', 'success');
+  } catch (error) {
+    console.error('Kontaktformular:', error);
+    submitButton.disabled = false;
+    submitButton.textContent = 'Nachricht senden';
+    setFormStatus('Die Nachricht konnte gerade nicht gesendet werden. Bitte schreiben Sie uns direkt an kontakt@pluralo.de.', 'error');
   }
+}
