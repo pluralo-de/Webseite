@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pluralo</title>
   <meta name="description" content="Pluralo entwickelt moderne Webseiten und Social-Media-Auftritte für Unternehmen – klar, sichtbar und aufeinander abgestimmt.">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#06090b">
+  <meta name="theme-color" id="themeColor" content="#06090b">
   <link rel="canonical" href="https://www.pluralo.de/">
 
   <meta property="og:type" content="website">
@@ -19,6 +19,18 @@
   <link rel="icon" href="assets/pluralo-icon.svg" type="image/svg+xml">
   <link rel="preload" href="webfonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="webfonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem('pluralo-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (_) {
+        // Die Seite bleibt auch ohne lokalen Speicher im Dunkelmodus nutzbar.
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
   <script src="vendor/emailjs.min.js" defer></script>
   <script src="script.js" defer></script>
@@ -32,8 +44,8 @@
 <header>
   <nav aria-label="Hauptnavigation">
     <a class="brand" href="#start" aria-label="Pluralo – zur Startseite">
-      <img src="assets/pluralo-icon.svg" alt="" width="34" height="34">
-      <span>Pluralo</span>
+      <img class="brand-icon" src="assets/pluralo-icon.svg" alt="" width="34" height="34">
+      <img class="brand-wordmark" src="assets/pluralo-wordmark.svg" alt="" width="102" height="24">
     </a>
     <div class="nav-links" id="mainNav">
       <a href="#leistungen">Leistungen</a>
@@ -42,6 +54,18 @@
       <a href="#kontakt">Kontakt</a>
     </div>
     <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Hellmodus aktivieren">
+        <span class="theme-toggle-track" aria-hidden="true">
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <path d="M12 2.5v2M12 19.5v2M4.5 12h-2M21.5 12h-2M5.3 5.3 3.9 3.9M20.1 20.1l-1.4-1.4M18.7 5.3l1.4-1.4M3.9 20.1l1.4-1.4"></path>
+          </svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24">
+            <path d="M20 15.1A8.2 8.2 0 0 1 8.9 4a8.2 8.2 0 1 0 11.1 11.1Z"></path>
+          </svg>
+          <span class="theme-toggle-thumb"></span>
+        </span>
+      </button>
       <a class="btn btn-primary" href="#kontakt">Erstgespräch sichern</a>
       <button class="burger" id="burgerBtn" type="button" aria-label="Menü öffnen" aria-controls="mainNav" aria-expanded="false">☰</button>
     </div>
@@ -62,10 +86,20 @@
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <div class="blk blk-a"></div>
-      <div class="blk blk-b"></div>
-      <div class="blk blk-c"></div>
-      <div class="blk blk-d"></div>
+      <svg class="hero-logo" viewBox="275 270 450 460" focusable="false">
+        <defs>
+          <linearGradient id="heroPluraloGradient" x1="360" y1="300" x2="640" y2="700" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#00FCA8"></stop>
+            <stop offset="1" stop-color="#1CDAFF"></stop>
+          </linearGradient>
+        </defs>
+        <g fill="url(#heroPluraloGradient)">
+          <path class="hero-logo-piece piece-a" d="M406.5 298.05H578.66c5.523 0 8.746 4.477 7.2 10l-47.078 168.14c-1.547 5.523-7.277 10-12.8 10h-172.16c-5.523 0-8.747-4.477-7.2-10L393.7 308.05c1.546-5.523 7.277-10 12.8-10Z"></path>
+          <path class="hero-logo-piece piece-b" d="M594.68 379.784h88.88c5.523 0 8.746 4.477 7.2 10l-24.192 86.4c-1.546 5.523-7.277 10-12.8 10h-88.88c-5.522 0-8.746-4.477-7.2-10l24.192-86.4c1.546-5.523 7.277-10 12.8-10Z"></path>
+          <path class="hero-logo-piece piece-c" d="M345.9 513.932h89.7c5.523 0 8.746 4.477 7.2 10l-24.203 86.44c-1.546 5.523-7.277 10-12.8 10h-89.7c-5.523 0-8.746-4.477-7.2-10l24.203-86.44c1.546-5.523 7.277-10 12.8-10Z"></path>
+          <path class="hero-logo-piece piece-d" d="M473.74 513.932H646.1c5.523 0 8.746 4.477 7.2 10l-47.056 168.06c-1.546 5.523-7.277 10-12.8 10h-172.36c-5.523 0-8.746-4.477-7.2-10l47.056-168.06c1.546-5.523 7.277-10 12.8-10Z"></path>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
@@ -234,7 +268,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <a class="brand" href="#start" aria-label="Pluralo – zur Startseite"><img src="assets/pluralo-icon.svg" alt="" width="34" height="34"><span>Pluralo</span></a>
+      <a class="brand" href="#start" aria-label="Pluralo – zur Startseite"><img class="brand-icon" src="assets/pluralo-icon.svg" alt="" width="34" height="34"><img class="brand-wordmark" src="assets/pluralo-wordmark.svg" alt="" width="102" height="24"></a>
       <div class="foot-links">
         <a href="#leistungen">Leistungen</a>
         <a href="#warum-pluralo">Warum wir</a>
@@ -293,7 +327,7 @@
       <p>Zur technischen Zustellung der Formularinhalte per E-Mail nutzen wir den Dienst EmailJS der EmailJS Pte. Ltd. Dabei werden die eingegebenen Formulardaten und technische Metadaten an EmailJS übermittelt. EmailJS gibt an, die hierfür genutzten Server in den USA zu betreiben und Übermittlungen personenbezogener Daten aus der EU auf Standardvertragsklauseln der Europäischen Kommission zu stützen. Weitere Informationen finden Sie in der <a class="legal-link" href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> und der <a class="legal-link" href="https://www.emailjs.com/legal/data-protection-agreement/" target="_blank" rel="noopener noreferrer">Datenverarbeitungsvereinbarung von EmailJS</a>.</p>
 
       <h3>4. Cookies &amp; Schriftarten</h3>
-      <p>Diese Website setzt aktuell keine Cookies zu Analyse- oder Marketingzwecken ein. Alle verwendeten Schriftarten werden direkt von dieser Website geladen; es findet keine Verbindung zu externen Font-Anbietern statt.</p>
+      <p>Diese Website setzt aktuell keine Cookies zu Analyse- oder Marketingzwecken ein. Die gewählte Hell- oder Dunkelansicht wird ausschließlich lokal in Ihrem Browser gespeichert. Alle verwendeten Schriftarten werden direkt von dieser Website geladen; es findet keine Verbindung zu externen Font-Anbietern statt.</p>
 
       <h3>5. Ihre Rechte</h3>
       <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Recht auf Datenübertragbarkeit und Widerspruch. Zudem steht Ihnen ein Beschwerderecht bei der zuständigen Datenschutzaufsichtsbehörde zu. Wenden Sie sich hierzu gerne an die oben genannte Kontaktadresse.</p>
