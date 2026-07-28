@@ -8,6 +8,49 @@ if (window.emailjs) {
   window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 }
 
+// Hell- und Dunkelmodus umschalten und die Auswahl auf diesem Gerät merken.
+const themeToggle = document.getElementById('themeToggle');
+const themeColor = document.getElementById('themeColor');
+const root = document.documentElement;
+
+function getCurrentTheme() {
+  return root.dataset.theme === 'light' ? 'light' : 'dark';
+}
+
+function updateThemeControls() {
+  const isLight = getCurrentTheme() === 'light';
+
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-checked', String(isLight));
+    themeToggle.setAttribute('aria-label', isLight ? 'Dunkelmodus aktivieren' : 'Hellmodus aktivieren');
+    themeToggle.title = isLight ? 'Dunkelmodus' : 'Hellmodus';
+  }
+
+  if (themeColor) {
+    themeColor.setAttribute('content', isLight ? '#f4f8f7' : '#06090b');
+  }
+}
+
+function setTheme(theme) {
+  root.dataset.theme = theme;
+
+  try {
+    localStorage.setItem('pluralo-theme', theme);
+  } catch (_) {
+    // Der Schalter funktioniert auch, wenn lokaler Speicher blockiert ist.
+  }
+
+  updateThemeControls();
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    setTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
+  });
+}
+
+updateThemeControls();
+
 // Elemente beim Scrollen einblenden.
 const revealEls = document.querySelectorAll('.reveal');
 
@@ -103,7 +146,7 @@ if (burgerBtn && navLinks) {
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 920 && mobileOpen) {
+    if (window.innerWidth > 1040 && mobileOpen) {
       setMobileMenu(false);
     }
   });
