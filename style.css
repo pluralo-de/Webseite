@@ -178,7 +178,7 @@
   .brand{ display:flex; align-items:center; gap:11px; flex:none; }
   .brand-icon{ width:34px; height:34px; border-radius:8px; flex:none; }
   .brand-wordmark{
-    width:102px;
+    width:98px;
     height:auto;
     filter:var(--brand-wordmark-filter);
     flex:none;
@@ -468,7 +468,7 @@
     nav{ padding:14px 20px; }
     .brand{ gap:10px; }
     .brand-icon{ width:36px; height:36px; }
-    .brand-wordmark{ width:94px; }
+    .brand-wordmark{ width:90px; }
     .nav-actions{ gap:12px; }
     .nav-links.is-open{
       top:65px;
