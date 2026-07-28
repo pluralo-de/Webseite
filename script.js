@@ -163,7 +163,7 @@ async function sendMail(name, email, company, subject, message) {
     form.reset();
   } catch (error) {
     console.error('Kontaktformular konnte nicht gesendet werden.', error);
-    showFormError('Das Senden hat leider nicht funktioniert. Bitte versuchen Sie es erneut oder schreiben Sie direkt an kontakt@pluralo.de.');
+    showFormError('Das Senden hat leider nicht funktioniert. Bitte versuchen Sie es erneut oder schreiben Sie direkt an pluralo.alllg@gmail.com.');
     submitBtn.disabled = false;
     submitBtn.textContent = 'Nachricht senden';
   }
