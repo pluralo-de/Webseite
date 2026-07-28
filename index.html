@@ -1,61 +1,41 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pluralo</title>
-<meta name="description" content="Pluralo entwickelt moderne Webseiten und Social-Media-Auftritte für Unternehmen, die online sichtbar werden und mehr Anfragen gewinnen möchten.">
-<meta name="robots" content="index, follow">
-<meta name="theme-color" content="#06090b">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<link rel="canonical" href="https://pluralo.de/">
-<meta property="og:locale" content="de_DE">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pluralo | Webseiten &amp; Social Media für Unternehmen">
-<meta property="og:description" content="Moderne Webseiten und Social-Media-Auftritte, die zusammenpassen und aus Sichtbarkeit echte Anfragen machen.">
-<meta property="og:url" content="https://pluralo.de/">
-<meta property="og:site_name" content="Pluralo">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pluralo | Webseiten &amp; Social Media">
-<meta name="twitter:description" content="Webseiten und Social Media für Unternehmen, die online sichtbar werden möchten.">
-<link rel="icon" href="Bilder/logo.PNG" type="image/png">
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Pluralo",
-  "url": "https://pluralo.de/",
-  "logo": "https://pluralo.de/Bilder/logo.PNG",
-  "email": "kontakt@pluralo.de",
-  "telephone": "+49 176 79920971",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Mohrsmühlenweg 75",
-    "postalCode": "56626",
-    "addressLocality": "Andernach",
-    "addressCountry": "DE"
-  },
-  "sameAs": [
-    "https://www.instagram.com/pluralo.de/",
-    "https://www.linkedin.com/company/pluralo-de/"
-  ]
-}
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pluralo</title>
+  <meta name="description" content="Pluralo entwickelt moderne Webseiten und Social-Media-Auftritte für Unternehmen – klar, sichtbar und aufeinander abgestimmt.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#06090b">
+  <link rel="canonical" href="https://www.pluralo.de/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Pluralo">
+  <meta property="og:title" content="Pluralo">
+  <meta property="og:description" content="Webseiten und Social Media für Unternehmen – als eine starke digitale Präsenz.">
+  <meta property="og:url" content="https://www.pluralo.de/">
+
+  <link rel="icon" href="assets/pluralo-icon.svg" type="image/svg+xml">
+  <link rel="preload" href="webfonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="webfonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/emailjs.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 
 
 <body>
-<a class="skip-link" href="#main-content">Direkt zum Inhalt</a>
+
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
 
 <header>
-  <nav>
-    <a class="brand" href="#main-content" aria-label="Pluralo – zur Startseite">
-      <img src="Bilder/logo.PNG" alt="" width="34" height="34">
+  <nav aria-label="Hauptnavigation">
+    <a class="brand" href="#start" aria-label="Pluralo – zur Startseite">
+      <img src="assets/pluralo-icon.svg" alt="" width="34" height="34">
       <span>Pluralo</span>
     </a>
-    <div class="nav-links" id="primaryNav">
+    <div class="nav-links" id="mainNav">
       <a href="#leistungen">Leistungen</a>
       <a href="#arbeit">Arbeitsweise</a>
       <a href="#warum-pluralo">Warum wir</a>
@@ -63,13 +43,14 @@
     </div>
     <div class="nav-actions">
       <a class="btn btn-primary" href="#kontakt">Erstgespräch sichern</a>
-      <button class="burger" id="burgerBtn" type="button" aria-label="Menü öffnen" aria-controls="primaryNav" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+      <button class="burger" id="burgerBtn" type="button" aria-label="Menü öffnen" aria-controls="mainNav" aria-expanded="false">☰</button>
     </div>
   </nav>
 </header>
 
-<main id="main-content" tabindex="-1">
-<section class="hero">
+<main id="main-content">
+
+<section class="hero" id="start">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Webseiten &amp; Social Media für Unternehmen</span>
@@ -92,8 +73,8 @@
 <div class="chipbar">
   <div class="wrap">
     <div class="chip"><span class="dot"></span>Moderne, responsive Webseiten</div>
-    <div class="chip"><span class="dot"></span>Suchmaschinenfreundlich aufgebaut</div>
-    <div class="chip"><span class="dot"></span>Persönlich und transparent umgesetzt</div>
+    <div class="chip"><span class="dot"></span>Auffindbar bei Google</div>
+    <div class="chip"><span class="dot"></span>Zukunftsorientiert gedacht</div>
   </div>
 </div>
 
@@ -102,23 +83,23 @@
     <div class="sec-head reveal">
       <span class="eyebrow">Leistungen</span>
       <h2>Zwei Bausteine, ein Ziel: mehr Anfragen.</h2>
-      <p>Wir bauen nicht einfach „eine Webseite“ oder „ein paar Posts“. Wir sorgen dafür, dass beides zusammenpasst und Ihre Zielgruppe klar anspricht.</p>
+      <p>Wir bauen nicht einfach „eine Webseite" oder „ein paar Posts". Wir sorgen dafür, dass beides zusammen Ihre Zielgruppe erreicht und überzeugt.</p>
     </div>
     <div class="services">
       <div class="card reveal">
         <div class="mark"></div>
         <h3>Webseitenentwicklung</h3>
-        <p>Schnelle, moderne Webseiten, die auf jedem Gerät überzeugen, Ihr Angebot klar erklären und technisch sauber für Suchmaschinen aufgebaut sind – von der Konzeption bis zum Launch.</p>
+        <p>Schnelle, moderne Webseiten, die auf jedem Gerät überzeugen, klar kommunizieren und bei Google gefunden werden, von der Konzeption bis zum Launch.</p>
       </div>
       <div class="card reveal">
         <div class="mark"></div>
-        <h3>Social-Media-Marketing</h3>
-        <p>Content-Strategien für Instagram, TikTok &amp; Co., die zur Zielgruppe passen und Reichweite gezielt in Interesse und Kontaktmöglichkeiten übersetzen.</p>
+        <h3>Social Media Marketing</h3>
+        <p>Content-Strategien für Instagram, TikTok &amp; Co., die zur Zielgruppe passen und aus Reichweite echte Anfragen machen, statt planlosem Posten.</p>
       </div>
       <div class="card reveal">
         <div class="mark"></div>
-        <h3>Digitale Strategie &amp; Weiterentwicklung</h3>
-        <p>Wir betrachten Webseite, Social Media und Auffindbarkeit als ein System, werten Ergebnisse aus und entwickeln die Maßnahmen gezielt weiter.</p>
+        <h3>Digitale Strategie &amp; Wachstum</h3>
+        <p>Wir betrachten Webseite, Social Media und Auffindbarkeit als ein System, das laufend beobachtet und weiterentwickelt wird.</p>
       </div>
     </div>
   </div>
@@ -134,7 +115,7 @@
       <div class="step reveal">
         <span class="num">01</span>
         <h3>Analyse</h3>
-        <p>Wir prüfen Ihre aktuelle Präsenz: Webseite, Social Media, Auffindbarkeit bei Google und die Stellen, an denen Interessenten heute abspringen.</p>
+        <p>Wir prüfen Ihre aktuelle Präsenz: Webseite, Social Media, Auffindbarkeit bei Google und wo genau Kunden heute verloren gehen.</p>
       </div>
       <div class="step reveal">
         <span class="num">02</span>
@@ -143,8 +124,8 @@
       </div>
       <div class="step reveal">
         <span class="num">03</span>
-        <h3>Weiterentwicklung</h3>
-        <p>Wir beobachten die Ergebnisse und optimieren gezielt, damit Ihre digitale Präsenz Schritt für Schritt wirksamer wird.</p>
+        <h3>Wachstum</h3>
+        <p>Wir betreuen und optimieren kontinuierlich, damit aus Sichtbarkeit dauerhaft neue Kunden werden.</p>
       </div>
     </div>
   </div>
@@ -157,27 +138,27 @@
     <div class="sec-head reveal">
       <span class="eyebrow">Warum Pluralo</span>
       <h2>Warum mit uns starten, statt abzuwarten.</h2>
-      <p>Pluralo befindet sich im Aufbau. Das kommunizieren wir offen – und verbinden den Neustart mit persönlicher Betreuung, kurzen Wegen und zeitgemäßer Umsetzung.</p>
+      <p>Pluralo ist ein neu gegründetes Unternehmen. Statt vorgetäuschter Referenzen bekommen Sie das, was ein Neustart tatsächlich mitbringt.</p>
     </div>
     <div class="services">
       <div class="card reveal">
         <div class="mark"></div>
         <h3>Direkter Draht zum Gründer</h3>
-        <p>Kein Callcenter und keine Weiterleitung durch mehrere Abteilungen: Sie sprechen direkt mit Runi Ahmad, der Ihr Projekt persönlich begleitet.</p>
+        <p>Kein Callcenter, keine Weiterleitung durch mehrere Abteilungen: Sie sprechen direkt mit der Person, die Ihr Projekt umsetzt.</p>
       </div>
       <div class="card reveal">
         <div class="mark"></div>
-        <h3>Zeitgemäß und klar umgesetzt</h3>
-        <p>Wir arbeiten mit aktuellen Standards, passenden Formaten und einem klaren Blick auf das, was Ihre Zielgruppe wirklich braucht.</p>
+        <h3>Aktuelles Handwerk, kein alter Trott</h3>
+        <p>Wir arbeiten mit den Werkzeugen, Formaten und Trends von heute, nicht mit Vorlagen und Gewohnheiten von vor zehn Jahren.</p>
       </div>
       <div class="card reveal">
         <div class="mark"></div>
-        <h3>Eng begleitet von Anfang an</h3>
-        <p>Als eines der ersten Pluralo-Projekte erhält Ihr Vorhaben kurze Abstimmungswege und besonders viel persönliche Aufmerksamkeit.</p>
+        <h3>Volle Aufmerksamkeit statt Kundenstapel</h3>
+        <p>Als eines unserer ersten Projekte bekommen Sie unsere volle Zeit und Konzentration, nicht einen von fünfzig parallelen Kunden.</p>
       </div>
     </div>
     <div class="founder-note reveal">
-      <strong>Gründungskonditionen:</strong>&nbsp;Für die ersten Kundenprojekte gelten faire Einstiegskonditionen und eine besonders enge Abstimmung von der Idee bis zum Launch.
+      <strong>Gründungskonditionen:</strong>&nbsp;Als eine unserer ersten Kooperationen erhalten Sie faire Einstiegspreise und eine besonders enge Abstimmung während der Umsetzung.
     </div>
   </div>
 </section>
@@ -199,13 +180,13 @@
     <div class="contact-info reveal">
       <span class="eyebrow">Kontakt</span>
       <h2>Lassen Sie uns sprechen.</h2>
-      <p>Schreiben Sie uns kurz, worum es geht. Wir melden uns meist innerhalb von 24 Stunden mit einem Terminvorschlag.</p>
+      <p>Schreiben Sie uns kurz, worum es geht, wir melden uns in der Regel innerhalb von 24 Stunden mit einem Terminvorschlag.</p>
       <div class="info-row"><span class="lbl">E-Mail</span><a href="mailto:kontakt@pluralo.de">kontakt@pluralo.de</a></div>
       <div class="info-row"><span class="lbl">Telefon</span><a href="tel:+4917679920971">+49&nbsp;176&nbsp;79920971</a></div>
       <div class="info-row"><span class="lbl">Standort</span><span>Andernach, Rheinland-Pfalz</span></div>
     </div>
 
-    <form id="contactForm" novalidate>
+    <form id="contactForm" novalidate aria-label="Kontaktformular">
       <div class="field" data-field="name">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Ihr Name" autocomplete="name" maxlength="100" required aria-describedby="nameError">
@@ -227,32 +208,33 @@
       </div>
       <div class="field" data-field="message">
         <label for="message">Nachricht</label>
-        <textarea id="message" name="message" placeholder="Worum geht es?" maxlength="3000" required aria-describedby="messageError"></textarea>
+        <textarea id="message" name="message" placeholder="Worum geht es?" maxlength="2000" required aria-describedby="messageError"></textarea>
         <span class="err" id="messageError">Bitte schreiben Sie uns eine kurze Nachricht.</span>
       </div>
       <div class="field field-consent" data-field="consent">
         <label class="consent-label">
           <input type="checkbox" id="consent" name="consent" required aria-describedby="consentError">
-          <span>Ich habe die <a href="#datenschutzBox" id="datenschutzLinkInline">Datenschutzerklärung</a> zur Kenntnis genommen.</span>
+          <span>Ich habe die <a href="#datenschutzBox" id="datenschutzLinkInline">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage einverstanden.</span>
         </label>
         <span class="err" id="consentError">Bitte stimmen Sie der Datenschutzerklärung zu.</span>
       </div>
-      <div class="field hp-field" aria-hidden="true">
+      <div class="hp-field" aria-hidden="true">
         <label for="website">Website</label>
         <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
       </div>
-      <noscript><p class="noscript-note">Zum Senden des Formulars wird JavaScript benötigt. Alternativ erreichen Sie uns direkt unter <a href="mailto:kontakt@pluralo.de">kontakt@pluralo.de</a>.</p></noscript>
       <button type="submit" class="btn btn-primary form-submit">Nachricht senden</button>
-      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      <p class="form-error" id="formError" role="alert" aria-live="assertive" hidden></p>
+      <p class="form-success" id="formSuccess" role="status" aria-live="polite">Danke! Ihre Nachricht ist angekommen, wir melden uns in Kürze.</p>
     </form>
   </div>
 </section>
+
 </main>
 
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <div class="brand"><img src="Bilder/logo.PNG" alt="" width="34" height="34"><span>Pluralo</span></div>
+      <a class="brand" href="#start" aria-label="Pluralo – zur Startseite"><img src="assets/pluralo-icon.svg" alt="" width="34" height="34"><span>Pluralo</span></a>
       <div class="foot-links">
         <a href="#leistungen">Leistungen</a>
         <a href="#warum-pluralo">Warum wir</a>
@@ -281,7 +263,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 Pluralo. Alle Rechte vorbehalten.</span>
-      <span>Webseiten &amp; Social-Media-Marketing</span>
+      <span>Webseiten &amp; Social Media Marketing</span>
     </div>
 
     <div class="impressum-box" id="impressumBox">
@@ -291,10 +273,10 @@
       <h3>Vertreten durch</h3>
       <p class="placeholder">Runi Ahmad</p>
       <h3>Kontakt</h3>
-      <p class="placeholder">impressum@pluralo.de<br>+49&nbsp;176&nbsp;79920971</p>
+      <p class="placeholder">impressum@pluralo.de<br>+49 176 79920971</p>
       <h3>Umsatzsteuer</h3>
       <p class="placeholder">Gemäß § 19 Abs. 1 UStG wird keine Umsatzsteuer erhoben (Kleinunternehmerregelung).</p>
-      <h3>Verantwortlich für journalistisch-redaktionelle Inhalte gemäß § 18 Abs. 2 MStV</h3>
+      <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
       <p class="placeholder">Runi Ahmad<br>Mohrsmühlenweg 75<br>56626 Andernach</p>
     </div>
 
@@ -306,15 +288,15 @@
 
       <h3>2. Server-Log-Files</h3>
       <p>Beim Aufruf dieser Website erhebt unser Hosting-Anbieter automatisch technische Daten, die Ihr Browser übermittelt, u.a. IP-Adresse, Datum und Uhrzeit der Anfrage, Browsertyp und -version, sowie das verwendete Betriebssystem. Diese Daten sind aus technischen Gründen notwendig, um die Website korrekt auszuliefern (Art. 6 Abs. 1 lit. f DSGVO), und werden nicht mit anderen Datenquellen zusammengeführt.</p>
-      <p class="launch-note"><strong>Vor Veröffentlichung ergänzen:</strong> Name, Anschrift und Speicherdauer des gewählten Hosting-Anbieters.</p>
+      <p class="placeholder">Hosting-Anbieter: [Name und Sitz des Hosting-Anbieters einfügen]</p>
 
       <h3>3. Kontaktformular</h3>
-      <p>Wenn Sie uns über das Kontaktformular schreiben, verarbeiten wir die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, optional Unternehmen, Betreff und Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage und für mögliche Anschlussfragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit es um eine vorvertragliche Anfrage geht, andernfalls Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an der Bearbeitung von Kontaktanfragen.</p>
-      <p>Zur technischen Zustellung der Formularinhalte per E-Mail nutzen wir EmailJS (EmailJS Pte. Ltd.). Erst wenn Sie das Formular absenden, werden Ihre Angaben sowie technische Metadaten an EmailJS übermittelt. Nach Angaben des Anbieters befinden sich die für den Dienst eingesetzten Server in den USA und werden von Amazon Web Services betrieben. Für Übermittlungen in die USA sieht der Auftragsverarbeitungsvertrag von EmailJS EU-Standardvertragsklauseln vor.</p>
-      <p class="legal-links">Weitere Informationen: <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von EmailJS</a> und <a href="https://www.emailjs.com/legal/data-protection-agreement/" target="_blank" rel="noopener noreferrer">Auftragsverarbeitungsvertrag von EmailJS</a>.</p>
+      <p>Wenn Sie uns über das Kontaktformular schreiben, verarbeiten wir die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, optional Unternehmen, Betreff, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage und für den Fall von Anschlussfragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Anfrage) bzw. Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung).</p>
+      <p>Zur technischen Zustellung der Formularinhalte per E-Mail nutzen wir den Dienst EmailJS (EmailJS Corp., USA). Ihre Formulardaten werden dabei an die Server dieses Anbieters übermittelt, was eine Datenübertragung in ein Land außerhalb der EU/des EWR bedeuten kann. Weitere Informationen finden Sie in der <a class="legal-link" href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von EmailJS</a>.</p>
+      <p class="placeholder">[Sofern vorhanden: Hinweis auf Auftragsverarbeitungsvertrag bzw. Standardvertragsklauseln mit EmailJS ergänzen]</p>
 
       <h3>4. Cookies &amp; Schriftarten</h3>
-      <p>Diese Website setzt aktuell keine Cookies zu Analyse- oder Marketingzwecken ein und lädt keine Schriftarten von externen Anbietern. EmailJS wird erst kontaktiert, wenn Sie das Kontaktformular absenden.</p>
+      <p>Diese Website setzt aktuell keine Cookies zu Analyse- oder Marketingzwecken ein. Alle verwendeten Schriftarten sind lokal auf unserem eigenen Server eingebunden; es findet keine Verbindung zu externen Font-Anbietern statt.</p>
 
       <h3>5. Ihre Rechte</h3>
       <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Recht auf Datenübertragbarkeit und Widerspruch. Zudem steht Ihnen ein Beschwerderecht bei der zuständigen Datenschutzaufsichtsbehörde zu. Wenden Sie sich hierzu gerne an die oben genannte Kontaktadresse.</p>

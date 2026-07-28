@@ -1,2 +1,2 @@
 # Webseite
-Offiziele Pluralo Webseite
+Offizielle Pluralo-Webseite.
