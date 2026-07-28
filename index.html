@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pluralo</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pluralo</title>
+  <meta name="description" content="Pluralo entwickelt moderne Webseiten und Social-Media-Auftritte für Unternehmen – klar, sichtbar und aufeinander abgestimmt.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#06090b">
+  <link rel="canonical" href="https://www.pluralo.de/">
 
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Pluralo">
+  <meta property="og:title" content="Pluralo">
+  <meta property="og:description" content="Webseiten und Social Media für Unternehmen – als eine starke digitale Präsenz.">
+  <meta property="og:url" content="https://www.pluralo.de/">
 
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-        </script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "Cyey8UpF_6g3_3OEy",
-      });
-   })();</script>
-
-
-
+  <link rel="icon" href="assets/pluralo-icon.svg" type="image/svg+xml">
+  <link rel="preload" href="webfonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="webfonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/emailjs.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 
 
 <body>
 
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
 <header>
-  <nav>
-    <div class="brand">
-      <img src="logo.PNG" alt="Pluralo Logo">
+  <nav aria-label="Hauptnavigation">
+    <a class="brand" href="#start" aria-label="Pluralo – zur Startseite">
+      <img src="assets/pluralo-icon.svg" alt="" width="34" height="34">
       <span>Pluralo</span>
-    </div>
-    <div class="nav-links">
+    </a>
+    <div class="nav-links" id="mainNav">
       <a href="#leistungen">Leistungen</a>
       <a href="#arbeit">Arbeitsweise</a>
       <a href="#warum-pluralo">Warum wir</a>
@@ -39,12 +43,14 @@
     </div>
     <div class="nav-actions">
       <a class="btn btn-primary" href="#kontakt">Erstgespräch sichern</a>
-      <button class="burger" id="burgerBtn" aria-label="Menü öffnen">☰</button>
+      <button class="burger" id="burgerBtn" type="button" aria-label="Menü öffnen" aria-controls="mainNav" aria-expanded="false">☰</button>
     </div>
   </nav>
 </header>
 
-<section class="hero">
+<main id="main-content">
+
+<section class="hero" id="start">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Webseiten &amp; Social Media für Unternehmen</span>
@@ -67,7 +73,6 @@
 <div class="chipbar">
   <div class="wrap">
     <div class="chip"><span class="dot"></span>Moderne, responsive Webseiten</div>
-    <div class="chip"><span class="dot"></span>Social-Media-Strategie statt Zufallsposts</div>
     <div class="chip"><span class="dot"></span>Auffindbar bei Google</div>
     <div class="chip"><span class="dot"></span>Zukunftsorientiert gedacht</div>
   </div>
@@ -100,7 +105,7 @@
   </div>
 </section>
 
-<section class="sec" id="arbeit" style="background:var(--ink-raised); border-top:1px solid var(--ink-line); border-bottom:1px solid var(--ink-line);">
+<section class="sec sec-raised" id="arbeit">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Arbeitsweise</span>
@@ -110,7 +115,7 @@
       <div class="step reveal">
         <span class="num">01</span>
         <h3>Analyse</h3>
-        <p>Wir prüfen Ihre aktuelle Präsenz: Webseite, Social Media, Auffindbarkeit bei Google, und wo genau Kunden heute verloren gehen.</p>
+        <p>Wir prüfen Ihre aktuelle Präsenz: Webseite, Social Media, Auffindbarkeit bei Google und wo genau Kunden heute verloren gehen.</p>
       </div>
       <div class="step reveal">
         <span class="num">02</span>
@@ -158,7 +163,7 @@
   </div>
 </section>
 
-<section class="sec" style="padding-top:0;">
+<section class="sec sec-compact-top">
   <div class="wrap">
     <div class="cta-banner reveal">
       <div>
@@ -176,59 +181,66 @@
       <span class="eyebrow">Kontakt</span>
       <h2>Lassen Sie uns sprechen.</h2>
       <p>Schreiben Sie uns kurz, worum es geht, wir melden uns in der Regel innerhalb von 24 Stunden mit einem Terminvorschlag.</p>
-      <div class="info-row"><span class="lbl">E-Mail</span><span>kontakt@pluralo.de</span></div>
-      <div class="info-row"><span class="lbl">Telefon</span><span>+49 176 79920971</span></div>
+      <div class="info-row"><span class="lbl">E-Mail</span><a href="mailto:pluralo.alllg@gmail.com">pluralo.alllg@gmail.com</a></div>
+      <div class="info-row"><span class="lbl">Telefon</span><a href="tel:+4917679920971">+49&nbsp;176&nbsp;79920971</a></div>
       <div class="info-row"><span class="lbl">Standort</span><span>Andernach, Rheinland-Pfalz</span></div>
     </div>
 
-    <form id="contactForm" novalidate>
+    <form id="contactForm" novalidate aria-label="Kontaktformular">
       <div class="field" data-field="name">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Ihr Name">
-        <span class="err">Bitte geben Sie Ihren Namen ein.</span>
+        <input type="text" id="name" name="name" placeholder="Ihr Name" autocomplete="name" maxlength="100" required aria-describedby="nameError">
+        <span class="err" id="nameError">Bitte geben Sie Ihren Namen ein.</span>
       </div>
       <div class="field" data-field="email">
         <label for="email">E-Mail</label>
-        <input type="email" id="email" name="email" placeholder="Ihre E-Mail Adresse">
-        <span class="err">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
+        <input type="email" id="email" name="email" placeholder="Ihre E-Mail-Adresse" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="emailError">
+        <span class="err" id="emailError">Bitte geben Sie eine gültige E-Mail-Adresse ein.</span>
       </div>
       <div class="field" data-field="company">
         <label for="company">Unternehmen (optional)</label>
-        <input type="text" id="company" name="company" placeholder="Ihr Unternehmen">
+        <input type="text" id="company" name="company" placeholder="Ihr Unternehmen" autocomplete="organization" maxlength="120">
       </div>
       <div class="field" data-field="subject">
         <label for="subject">Betreff</label>
-        <input type="text" id="subject" name="subject" placeholder="Worum geht es kurz gesagt?">
-        <span class="err">Bitte geben Sie einen Betreff ein.</span>
+        <input type="text" id="subject" name="subject" placeholder="Worum geht es kurz gesagt?" maxlength="150" required aria-describedby="subjectError">
+        <span class="err" id="subjectError">Bitte geben Sie einen Betreff ein.</span>
       </div>
       <div class="field" data-field="message">
         <label for="message">Nachricht</label>
-        <textarea id="message" name="message" placeholder="Worum geht es?"></textarea>
-        <span class="err">Bitte schreiben Sie uns eine kurze Nachricht.</span>
+        <textarea id="message" name="message" placeholder="Worum geht es?" maxlength="2000" required aria-describedby="messageError"></textarea>
+        <span class="err" id="messageError">Bitte schreiben Sie uns eine kurze Nachricht.</span>
       </div>
       <div class="field field-consent" data-field="consent">
         <label class="consent-label">
-          <input type="checkbox" id="consent" name="consent">
-          <span>Ich habe die <a href="#" id="datenschutzLinkInline">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage einverstanden.</span>
+          <input type="checkbox" id="consent" name="consent" required aria-describedby="consentError">
+          <span>Ich habe die <a href="#datenschutzBox" id="datenschutzLinkInline">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage einverstanden.</span>
         </label>
-        <span class="err">Bitte stimmen Sie der Datenschutzerklärung zu.</span>
+        <span class="err" id="consentError">Bitte stimmen Sie der Datenschutzerklärung zu.</span>
+      </div>
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
       </div>
       <button type="submit" class="btn btn-primary form-submit">Nachricht senden</button>
-      <p class="form-success" id="formSuccess">Danke! Ihre Nachricht ist angekommen, wir melden uns in Kürze.</p>
+      <p class="form-error" id="formError" role="alert" aria-live="assertive" hidden></p>
+      <p class="form-success" id="formSuccess" role="status" aria-live="polite">Danke! Ihre Nachricht ist angekommen, wir melden uns in Kürze.</p>
     </form>
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <div class="brand"><img src="logo.png" alt="Pluralo Logo"><span>Pluralo</span></div>
+      <a class="brand" href="#start" aria-label="Pluralo – zur Startseite"><img src="assets/pluralo-icon.svg" alt="" width="34" height="34"><span>Pluralo</span></a>
       <div class="foot-links">
         <a href="#leistungen">Leistungen</a>
         <a href="#warum-pluralo">Warum wir</a>
         <a href="#kontakt">Kontakt</a>
-        <a href="#" id="impressumLink">Impressum</a>
-        <a href="#" id="datenschutzLink">Datenschutz</a>
+        <a href="#impressumBox" id="impressumLink">Impressum</a>
+        <a href="#datenschutzBox" id="datenschutzLink">Datenschutz</a>
       </div>
       <div class="foot-social">
         <a href="https://www.instagram.com/pluralo.de/" target="_blank" rel="noopener noreferrer" aria-label="Pluralo auf Instagram">
@@ -256,35 +268,32 @@
 
     <div class="impressum-box" id="impressumBox">
       <h2>Impressum</h2>
-      <h3>Angaben gemäß § 5 TMG</h3>
-      <p class="placeholder">Pluralo<br>Mohrsmühlenweg 75<br>56626 Andernach</p>
+      <h3>Angaben gemäß § 5 DDG</h3>
+      <p>Pluralo<br>Mohrsmühlenweg 75<br>56626 Andernach</p>
       <h3>Vertreten durch</h3>
-      <p class="placeholder">Runi Ahmad</p>
+      <p>Runi Ahmad</p>
       <h3>Kontakt</h3>
-      <p class="placeholder">impressum@pluralo.de<br>+49 176 79920971</p>
-      <h3>Umsatzsteuer</h3>
-      <p class="placeholder">Gemäß § 19 Abs. 1 UStG wird keine Umsatzsteuer erhoben (Kleinunternehmerregelung).</p>
-      <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
-      <p class="placeholder">Runi Ahmad<br>Mohrsmühlenweg 75<br>56626 Andernach</p>
+      <p><a class="legal-link" href="mailto:pluralo.alllg@gmail.com">pluralo.alllg@gmail.com</a><br>+49 176 79920971</p>
+      <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+      <p>Runi Ahmad<br>Mohrsmühlenweg 75<br>56626 Andernach</p>
     </div>
 
     <div class="impressum-box" id="datenschutzBox">
       <h2>Datenschutzerklärung</h2>
 
       <h3>1. Verantwortlicher</h3>
-      <p class="placeholder">Runi Ahmad (Pluralo)<br>Mohrsmühlenweg 75<br>56626 Andernach<br>E-Mail: impressum@pluralo.de</p>
+      <p>Runi Ahmad (Pluralo)<br>Mohrsmühlenweg 75<br>56626 Andernach<br>E-Mail: <a class="legal-link" href="mailto:pluralo.alllg@gmail.com">pluralo.alllg@gmail.com</a></p>
 
       <h3>2. Server-Log-Files</h3>
-      <p>Beim Aufruf dieser Website erhebt unser Hosting-Anbieter automatisch technische Daten, die Ihr Browser übermittelt, u.a. IP-Adresse, Datum und Uhrzeit der Anfrage, Browsertyp und -version, sowie das verwendete Betriebssystem. Diese Daten sind aus technischen Gründen notwendig, um die Website korrekt auszuliefern (Art. 6 Abs. 1 lit. f DSGVO), und werden nicht mit anderen Datenquellen zusammengeführt.</p>
-      <p class="placeholder">Hosting-Anbieter: [Name und Sitz des Hosting-Anbieters einfügen]</p>
+      <p>Diese Website wird über GitHub Pages bereitgestellt. Kontaktadressen des Anbieters sind GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Niederlande, und GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.</p>
+      <p>Beim Aufruf der Website werden insbesondere die IP-Adresse sowie weitere technische Verbindungsdaten verarbeitet. GitHub gibt an, die IP-Adresse von Besuchern einer GitHub-Pages-Website zu Sicherheitszwecken zu protokollieren und zu speichern. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO in unserem berechtigten Interesse an einer sicheren und zuverlässigen Bereitstellung der Website. Eine Verarbeitung in den USA und anderen Drittländern kann nicht ausgeschlossen werden. GitHub stützt solche Übermittlungen nach eigenen Angaben unter anderem auf das EU-US Data Privacy Framework und die Standardvertragsklauseln der Europäischen Kommission. Weitere Informationen finden Sie in der <a class="legal-link" href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von GitHub</a>.</p>
 
       <h3>3. Kontaktformular</h3>
       <p>Wenn Sie uns über das Kontaktformular schreiben, verarbeiten wir die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, optional Unternehmen, Betreff, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage und für den Fall von Anschlussfragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Anfrage) bzw. Art. 6 Abs. 1 lit. a DSGVO (Ihre Einwilligung).</p>
-      <p>Zur technischen Zustellung der Formularinhalte per E-Mail nutzen wir den Dienst EmailJS (EmailJS Corp., USA). Ihre Formulardaten werden dabei an die Server dieses Anbieters übermittelt, was eine Datenübertragung in ein Land außerhalb der EU/des EWR bedeuten kann. Weitere Informationen zum Datenschutz bei EmailJS finden Sie in der Datenschutzerklärung des Anbieters.</p>
-      <p class="placeholder">[Sofern vorhanden: Hinweis auf Auftragsverarbeitungsvertrag bzw. Standardvertragsklauseln mit EmailJS ergänzen]</p>
+      <p>Zur technischen Zustellung der Formularinhalte per E-Mail nutzen wir den Dienst EmailJS der EmailJS Pte. Ltd. Dabei werden die eingegebenen Formulardaten und technische Metadaten an EmailJS übermittelt. EmailJS gibt an, die hierfür genutzten Server in den USA zu betreiben und Übermittlungen personenbezogener Daten aus der EU auf Standardvertragsklauseln der Europäischen Kommission zu stützen. Weitere Informationen finden Sie in der <a class="legal-link" href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> und der <a class="legal-link" href="https://www.emailjs.com/legal/data-protection-agreement/" target="_blank" rel="noopener noreferrer">Datenverarbeitungsvereinbarung von EmailJS</a>.</p>
 
       <h3>4. Cookies &amp; Schriftarten</h3>
-      <p>Diese Website setzt aktuell keine Cookies zu Analyse- oder Marketingzwecken ein. Alle verwendeten Schriftarten sind lokal auf unserem eigenen Server eingebunden; es findet keine Verbindung zu externen Font-Anbietern statt.</p>
+      <p>Diese Website setzt aktuell keine Cookies zu Analyse- oder Marketingzwecken ein. Alle verwendeten Schriftarten werden direkt von dieser Website geladen; es findet keine Verbindung zu externen Font-Anbietern statt.</p>
 
       <h3>5. Ihre Rechte</h3>
       <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie ein Recht auf Datenübertragbarkeit und Widerspruch. Zudem steht Ihnen ein Beschwerderecht bei der zuständigen Datenschutzaufsichtsbehörde zu. Wenden Sie sich hierzu gerne an die oben genannte Kontaktadresse.</p>
