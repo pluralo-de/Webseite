@@ -6,15 +6,13 @@ aufgeführten DNS-Einträge gesetzt sind, leitet GitHub Pages
 
 ## Vor dem öffentlichen Start
 
-1. Angaben im Impressum prüfen:
-   - vollständiger und richtig geschriebener Name
-   - ladungsfähige Anschrift
-   - Telefonnummer und E-Mail-Adresse
-   - Kleinunternehmerregelung
-2. Die zwei eckigen Platzhalter in der Datenschutzerklärung ersetzen.
-3. Im EmailJS-Dashboard `https://www.pluralo.de` und
+1. Im EmailJS-Dashboard `https://www.pluralo.de` und
    `https://pluralo.de` als erlaubte Ursprünge eintragen.
-4. Das Kontaktformular nach der Veröffentlichung einmal selbst testen.
+2. Das Kontaktformular nach der Veröffentlichung einmal selbst testen.
+3. Impressum und Datenschutzerklärung fachlich prüfen lassen und bei Änderungen
+   der Unternehmens- oder Anbieterangaben aktualisieren.
+4. Falls später eine Umsatzsteuer-Identifikationsnummer oder
+   Wirtschafts-Identifikationsnummer erteilt wird, diese im Impressum ergänzen.
 
 ## Dateien auf GitHub
 
