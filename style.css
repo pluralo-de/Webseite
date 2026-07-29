@@ -316,25 +316,6 @@
   }
   .hero-ctas{ display:flex; gap:18px; flex-wrap:wrap; }
   .hero-ctas .btn{ min-height:52px; padding:15px 28px; font-size:0.96rem; }
-  .hero-assurances{
-    list-style:none;
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:10px 22px;
-    margin-top:28px;
-    color:var(--slate);
-    font-size:.82rem;
-  }
-  .hero-assurances li{ display:flex; align-items:center; gap:8px; }
-  .hero-assurances li::before{
-    content:"";
-    width:6px;
-    height:6px;
-    flex:none;
-    border-radius:50%;
-    background:var(--grad);
-  }
 
   .hero-visual{
     position:relative;
@@ -977,7 +958,6 @@
     .hero p.lead{ margin-bottom:28px; font-size:1rem; line-height:1.7; }
     .hero-ctas{ flex-direction:column; align-items:stretch; }
     .hero-ctas .btn{ width:100%; min-height:50px; justify-content:center; text-align:center; }
-    .hero-assurances{ align-items:flex-start; flex-direction:column; gap:8px; margin-top:24px; }
 
     .chipbar{ padding:18px 0; }
     .chip{ font-size:0.82rem; }
