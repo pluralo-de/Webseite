@@ -237,6 +237,7 @@ if (form) {
     const checks = [
       validateField(name, name.value.trim().length > 1),
       validateField(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())),
+      validateField(company, company.value.trim().length > 1),
       validateField(subject, subject.value.trim().length > 1),
       validateField(message, message.value.trim().length > 5),
       validateField(consent, consent.checked)
