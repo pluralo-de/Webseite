@@ -699,8 +699,6 @@
     gap:92px;
   }
   .faq-grid .sec-head{
-    position:sticky;
-    top:112px;
     margin-bottom:0;
   }
   .faq-list{
@@ -904,7 +902,6 @@
     .process-four{ grid-template-columns:repeat(2,minmax(0,1fr)); }
     .value-grid{ gap:8px; }
     .faq-grid{ grid-template-columns:1fr; gap:44px; }
-    .faq-grid .sec-head{ position:static; }
     .contact-grid{ grid-template-columns:1fr; }
     .chipbar .wrap{ gap:20px; }
     .cta-banner{ padding:48px 38px; }
