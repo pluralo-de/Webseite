@@ -16,7 +16,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from build import fonts_css
+from build import fonts_css, photo_path
 from posts import POSTS
 
 HERE = Path(__file__).resolve().parent
@@ -28,9 +28,10 @@ def slide_files(post: dict) -> list[tuple[Path, bool]]:
     """Alle Kacheln eines Beitrags in Reihenfolge, mit Vorlagen-Kennzeichen."""
     found = []
     for index, slide in enumerate(post["slides"], start=1):
-        prefix = "VORLAGE_" if slide.get("slot") else ""
+        offen = bool(slide.get("slot")) and not photo_path(slide)
+        prefix = "VORLAGE_" if offen else ""
         name = f'{prefix}post-{post["nr"]:02d}-{index}-{post["slug"]}.png'
-        found.append((PNG / name, bool(slide.get("slot"))))
+        found.append((PNG / name, offen))
     return found
 
 

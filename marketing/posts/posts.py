@@ -169,45 +169,43 @@ Welcher Punkt trifft bei Ihnen am ehesten zu? Schreiben Sie es in die Kommentare
         "typ": "B · Arbeit",
         "saeule": "Beweis",
         "pin": True,
-        "braucht": "Zwei Screenshots aus einem abgeschlossenen Projekt, jeweils 1080 × 1350 px.",
-        "slides": [
+                "slides": [
             {
-                "eyebrow": "Referenz",
+                "eyebrow": "Referenz · Andernach",
                 "counter": "01 / 02",
+                "karte": "vorher.png",
                 "h1": "Vorher",
                 "hsize": 104,
-                "align": "end",
+                "lead": "Ein Eintrag im Verzeichnis. Ohne Zeiten, ohne Website.",
+                "align": "center",
                 "swipe": True,
-                "slot": "Screenshot vorher|hier einsetzen|1080 × 1350 px",
-                "foto": "vorher.png",
             },
             {
-                "eyebrow": "Referenz",
+                "eyebrow": "Referenz · Andernach",
                 "counter": "02 / 02",
+                "karte": "nachher.png",
                 "h1": "Nachher",
                 "hsize": 104,
-                "align": "end",
-                "slot": "Screenshot nachher|hier einsetzen|1080 × 1350 px",
-                "foto": "nachher.png",
+                "lead": "Eigene Website, klares Angebot, direkter Kontakt.",
+                "align": "center",
             },
         ],
-        "caption": """[Branche] aus [Ort]: vorher und nachher.
+        "caption": """Fahrschule Berisha aus Andernach: vorher und nachher.
 
-Die Ausgangslage: [was an der alten Website nicht funktioniert hat, ein bis zwei Sätze].
+Die Ausgangslage: Wer die Fahrschule gesucht hat, fand einen Eintrag in einem Branchenverzeichnis. Keine Öffnungszeiten, keine Website, keine Möglichkeit, sich vorab ein Bild zu machen. Für einen Betrieb, dessen Kundschaft fast vollständig über das Handy sucht, ist das eine verschlossene Tür.
 
-Was wir geändert haben:
-· [Punkt 1]
-· [Punkt 2]
-· [Punkt 3]
+Was wir gemacht haben:
+· Eine eigene Website mit einer klaren Aussage statt einer Adresszeile
+· Die drei Ausbildungswege direkt auf der Startseite, nicht versteckt im Menü
+· Standort, Erreichbarkeit und Kontakt sofort sichtbar
+· Aufgebaut fürs Handy, weil dort die Anfragen entstehen
 
-Das Ergebnis: [eine belastbare Zahl, zum Beispiel Ladezeit von 6,2 auf 1,4 Sekunden, oder mehr Anfragen pro Monat].
+Der wichtigste Unterschied ist nicht das Design. Es ist, dass die Fahrschule online überhaupt erst stattfindet.
 
-Ohne Zahl ist ein Vorher-Nachher nur Geschmackssache. Mit Zahl ist es ein Beweis. Nennen Sie deshalb immer mindestens eine.
+Stehen Sie an einem ähnlichen Punkt? Im kostenlosen Erstgespräch schauen wir uns an, was bei Ihnen fehlt.
 
-Sie sind unsicher, ob sich ein Relaunch bei Ihnen lohnt? Wir schauen im kostenlosen Erstgespräch drauf.
-
-#relaunch #webdesign #vorhernachher #seo #andernach #koblenz #mittelrhein""",
-        "hinweis": "Nach dem Posten anpinnen. Die Platzhalter in eckigen Klammern vorher ersetzen.",
+#fahrschule #andernach #webdesign #lokalesseo #koblenz #mittelrhein #digitalagentur""",
+        "hinweis": "Nach dem Posten anpinnen. Vorab kurz mit der Fahrschule abstimmen, dass die Nennung in Ordnung geht.",
     },
     # ------------------------------------------------------------------ 05
     {
@@ -216,8 +214,7 @@ Sie sind unsicher, ob sich ein Relaunch bei Ihnen lohnt? Wir schauen im kostenlo
         "titel": "Wer dahintersteht",
         "typ": "D · Mensch",
         "saeule": "Mensch",
-        "braucht": "Ein Portraitfoto von Runi, hochkant, ruhiger Hintergrund, kein Blitz.",
-        "slides": [
+                "slides": [
             {
                 "eyebrow": "Wer dahintersteht",
                 "h1": "Runi Ahmad",
@@ -226,7 +223,7 @@ Sie sind unsicher, ob sich ein Relaunch bei Ihnen lohnt? Wir schauen im kostenlo
                 "align": "end",
                 "slot": "Portrait|hier einsetzen|1080 × 1350 px",
                 "foto": "runi.jpg",
-                "bildlage": "center 28%",
+                "bildlage": "58% center",
             },
         ],
         "caption": """Hinter Pluralo steht ein Mensch, kein Kundenportal.
@@ -366,16 +363,16 @@ Der häufigste Grund, warum Betriebe ein Website-Projekt vor sich herschieben, i
         "titel": "Standort Andernach",
         "typ": "D · Ort",
         "saeule": "Region",
-        "braucht": "Ein Foto aus Andernach, hochkant. Rheinufer, Altstadt oder Geysir funktionieren gut.",
-        "slides": [
+                "slides": [
             {
                 "eyebrow": "Standort",
                 "h1": "Andernach",
                 "hsize": 116,
-                "lead": "Regional verwurzelt, digital flexibel.",
+                "lead": "Regional verwurzelt,|digital flexibel.",
                 "align": "end",
                 "slot": "Foto aus Andernach|hier einsetzen|1080 × 1350 px",
                 "foto": "andernach.jpg",
+                "bildlage": "50% center",
             },
         ],
         "caption": """Wir arbeiten von Andernach aus.

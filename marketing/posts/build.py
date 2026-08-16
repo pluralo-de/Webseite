@@ -185,11 +185,43 @@ h1 em{
 /* Eigenes Foto oder Screenshot, formatfuellend beschnitten. */
 .media{position:absolute;inset:0;z-index:1;overflow:hidden}
 .media img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,center);display:block}
+/* Zwei Lagen: eine Abdunklung von allen Raendern nach innen, darunter der
+   Verlauf nach unten, auf dem die Ueberschrift steht. */
 .scrim{
   position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(6,9,11,.30) 0%, rgba(6,9,11,.05) 34%,
-    rgba(6,9,11,.86) 78%, rgba(6,9,11,.96) 100%);
+  background:
+    radial-gradient(118% 82% at 50% 40%,
+      rgba(6,9,11,0) 34%, rgba(6,9,11,.30) 66%, rgba(6,9,11,.62) 86%, rgba(6,9,11,.82) 100%),
+    linear-gradient(180deg,
+      rgba(6,9,11,.62) 0%, rgba(6,9,11,.14) 24%, rgba(6,9,11,.20) 46%,
+      rgba(6,9,11,.74) 72%, rgba(6,9,11,.93) 88%, rgba(6,9,11,.97) 100%);
 }
+/* Sanfte Stufe fuer Screenshots: der Inhalt soll lesbar bleiben, abgedunkelt
+   wird nur so weit, dass Kopfzeile und Ueberschrift sicher stehen. */
+.scrim.sanft{
+  background:
+    radial-gradient(126% 92% at 50% 44%,
+      rgba(6,9,11,0) 52%, rgba(6,9,11,.20) 78%, rgba(6,9,11,.44) 100%),
+    linear-gradient(180deg,
+      rgba(6,9,11,.60) 0%, rgba(6,9,11,.10) 16%, rgba(6,9,11,0) 42%,
+      rgba(6,9,11,.55) 74%, rgba(6,9,11,.92) 90%, rgba(6,9,11,.97) 100%);
+}
+/* Ueber einem Foto brauchen die kleinen Zeilen mehr Helligkeit, sonst
+   verschwinden sie in hellen Bildbereichen wie Himmel oder Fenster. */
+.slide.mitbild .eyebrow{color:#e4eef0}
+.slide.mitbild .counter{color:#c2d2d7}
+.slide.mitbild .url{color:#b3c2c8}
+.slide.mitbild .lead{color:#cfdde1}
+
+/* Screenshot als Karte auf dunklem Grund. Ein Screenshot ist quer und wuerde
+   formatfuellend beschnitten unlesbar, als Karte bleibt die ganze Seite sichtbar. */
+.card{
+  width:100%;background:#0b1316;overflow:hidden;
+  clip-path:polygon(22px 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%,0 22px);
+  box-shadow:0 46px 100px -44px rgba(0,0,0,.95);
+}
+.card img{width:100%;height:auto;display:block}
+
 /* Platzhalterflaeche, solange das Bild noch fehlt. */
 .slot{
   position:absolute;inset:0;z-index:1;
@@ -254,10 +286,11 @@ def slide_html(slide: dict, uid: int) -> str:
 
     photo = photo_path(slide)
     if photo:
+        theme += " mitbild"
         pos = slide.get("bildlage", "center")
         parts.append(
             f'<div class="media" style="--pos:{pos}"><img src="{embed(photo)}" alt="">'
-            f'<div class="scrim"></div></div>'
+            f'<div class="scrim {slide.get("verlauf", "")}"></div></div>'
         )
     elif slide.get("slot"):
         label = slide["slot"].replace("|", "<br>")
@@ -272,6 +305,9 @@ def slide_html(slide: dict, uid: int) -> str:
     parts.append(f'<header class="top">{top_left}{top_right}</header>')
 
     body = []
+    karte = slide.get("karte")
+    if karte and (QUELLEN / karte).exists():
+        body.append(f'<div class="card"><img src="{embed(QUELLEN / karte)}" alt=""></div>')
     if slide.get("big"):
         body.append(f'<p class="big">{html.escape(slide["big"])}</p>')
     if slide.get("h1"):
@@ -340,6 +376,9 @@ def render(chrome: str, source: Path, target: Path, transparent: bool = False) -
 
 def main() -> None:
     chrome = find_chrome()
+    # Leeren, weil sich Dateinamen aendern, sobald ein eigenes Bild dazukommt:
+    # aus VORLAGE_ und AUFLAGE_ wird dann die fertige Kachel.
+    shutil.rmtree(OUT, ignore_errors=True)
     OUT.mkdir(parents=True, exist_ok=True)
     WORK.mkdir(parents=True, exist_ok=True)
 

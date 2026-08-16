@@ -3,3 +3,14 @@ __pycache__/
 .work/
 pluralo-instagram-start.zip
 uebersicht-kontaktbogen.png
+
+# Das Repository ist oeffentlich und wird ueber GitHub Pages ausgeliefert.
+# Portraits, Ortsfotos, Kundenscreenshots und die daraus gerenderten Kacheln
+# gehoeren deshalb nicht hinein. Sie liegen lokal und wandern ueber die
+# ZIP-Datei zu Instagram.
+png/
+quellen/*.jpg
+quellen/*.jpeg
+quellen/*.png
+quellen/*.webp
+uebersicht.html

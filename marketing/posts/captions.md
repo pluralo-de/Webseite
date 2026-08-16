@@ -95,45 +95,40 @@ Welcher Punkt trifft bei Ihnen am ehesten zu? Schreiben Sie es in die Kommentare
 
 Kacheltyp B · Arbeit · Säule Beweis · 2 Bilder · anpinnen
 
-**Wird noch gebraucht:** Zwei Screenshots aus einem abgeschlossenen Projekt, jeweils 1080 × 1350 px.
-
-**Hinweis:** Nach dem Posten anpinnen. Die Platzhalter in eckigen Klammern vorher ersetzen.
+**Hinweis:** Nach dem Posten anpinnen. Vorab kurz mit der Fahrschule abstimmen, dass die Nennung in Ordnung geht.
 
 Dateien:
 
-- `VORLAGE_post-04-1-vorher-nachher.png` (Platzhalter ersetzen)
-- `VORLAGE_post-04-2-vorher-nachher.png` (Platzhalter ersetzen)
+- `post-04-1-vorher-nachher.png`
+- `post-04-2-vorher-nachher.png`
 
 Bildunterschrift:
 
 ```
-[Branche] aus [Ort]: vorher und nachher.
+Fahrschule Berisha aus Andernach: vorher und nachher.
 
-Die Ausgangslage: [was an der alten Website nicht funktioniert hat, ein bis zwei Sätze].
+Die Ausgangslage: Wer die Fahrschule gesucht hat, fand einen Eintrag in einem Branchenverzeichnis. Keine Öffnungszeiten, keine Website, keine Möglichkeit, sich vorab ein Bild zu machen. Für einen Betrieb, dessen Kundschaft fast vollständig über das Handy sucht, ist das eine verschlossene Tür.
 
-Was wir geändert haben:
-· [Punkt 1]
-· [Punkt 2]
-· [Punkt 3]
+Was wir gemacht haben:
+· Eine eigene Website mit einer klaren Aussage statt einer Adresszeile
+· Die drei Ausbildungswege direkt auf der Startseite, nicht versteckt im Menü
+· Standort, Erreichbarkeit und Kontakt sofort sichtbar
+· Aufgebaut fürs Handy, weil dort die Anfragen entstehen
 
-Das Ergebnis: [eine belastbare Zahl, zum Beispiel Ladezeit von 6,2 auf 1,4 Sekunden, oder mehr Anfragen pro Monat].
+Der wichtigste Unterschied ist nicht das Design. Es ist, dass die Fahrschule online überhaupt erst stattfindet.
 
-Ohne Zahl ist ein Vorher-Nachher nur Geschmackssache. Mit Zahl ist es ein Beweis. Nennen Sie deshalb immer mindestens eine.
+Stehen Sie an einem ähnlichen Punkt? Im kostenlosen Erstgespräch schauen wir uns an, was bei Ihnen fehlt.
 
-Sie sind unsicher, ob sich ein Relaunch bei Ihnen lohnt? Wir schauen im kostenlosen Erstgespräch drauf.
-
-#relaunch #webdesign #vorhernachher #seo #andernach #koblenz #mittelrhein
+#fahrschule #andernach #webdesign #lokalesseo #koblenz #mittelrhein #digitalagentur
 ```
 
 ## 05 · Wer dahintersteht
 
 Kacheltyp D · Mensch · Säule Mensch · 1 Bild
 
-**Wird noch gebraucht:** Ein Portraitfoto von Runi, hochkant, ruhiger Hintergrund, kein Blitz.
-
 Dateien:
 
-- `VORLAGE_post-05-1-wer-dahintersteht.png` (Platzhalter ersetzen)
+- `post-05-1-wer-dahintersteht.png`
 
 Bildunterschrift:
 
@@ -217,11 +212,9 @@ Der häufigste Grund, warum Betriebe ein Website-Projekt vor sich herschieben, i
 
 Kacheltyp D · Ort · Säule Region · 1 Bild
 
-**Wird noch gebraucht:** Ein Foto aus Andernach, hochkant. Rheinufer, Altstadt oder Geysir funktionieren gut.
-
 Dateien:
 
-- `VORLAGE_post-08-1-andernach.png` (Platzhalter ersetzen)
+- `post-08-1-andernach.png`
 
 Bildunterschrift:
 
