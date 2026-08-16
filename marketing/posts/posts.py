@@ -179,6 +179,7 @@ Welcher Punkt trifft bei Ihnen am ehesten zu? Schreiben Sie es in die Kommentare
                 "align": "end",
                 "swipe": True,
                 "slot": "Screenshot vorher|hier einsetzen|1080 × 1350 px",
+                "foto": "vorher.png",
             },
             {
                 "eyebrow": "Referenz",
@@ -187,6 +188,7 @@ Welcher Punkt trifft bei Ihnen am ehesten zu? Schreiben Sie es in die Kommentare
                 "hsize": 104,
                 "align": "end",
                 "slot": "Screenshot nachher|hier einsetzen|1080 × 1350 px",
+                "foto": "nachher.png",
             },
         ],
         "caption": """[Branche] aus [Ort]: vorher und nachher.
@@ -223,6 +225,8 @@ Sie sind unsicher, ob sich ein Relaunch bei Ihnen lohnt? Wir schauen im kostenlo
                 "lead": "Gründer von Pluralo",
                 "align": "end",
                 "slot": "Portrait|hier einsetzen|1080 × 1350 px",
+                "foto": "runi.jpg",
+                "bildlage": "center 28%",
             },
         ],
         "caption": """Hinter Pluralo steht ein Mensch, kein Kundenportal.
@@ -371,6 +375,7 @@ Der häufigste Grund, warum Betriebe ein Website-Projekt vor sich herschieben, i
                 "lead": "Regional verwurzelt, digital flexibel.",
                 "align": "end",
                 "slot": "Foto aus Andernach|hier einsetzen|1080 × 1350 px",
+                "foto": "andernach.jpg",
             },
         ],
         "caption": """Wir arbeiten von Andernach aus.

@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import base64
 import html
+import io
 import re
 import shutil
 import subprocess
@@ -29,6 +30,7 @@ ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "png"
 WORK = HERE / ".work"
+QUELLEN = HERE / "quellen"
 
 WIDTH, HEIGHT = 1080, 1350
 SCALE = 2
@@ -180,7 +182,15 @@ h1 em{
   letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
 }
 
-/* Platzhalterflaeche fuer eigene Fotos und Screenshots. */
+/* Eigenes Foto oder Screenshot, formatfuellend beschnitten. */
+.media{position:absolute;inset:0;z-index:1;overflow:hidden}
+.media img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,center);display:block}
+.scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(6,9,11,.30) 0%, rgba(6,9,11,.05) 34%,
+    rgba(6,9,11,.86) 78%, rgba(6,9,11,.96) 100%);
+}
+/* Platzhalterflaeche, solange das Bild noch fehlt. */
 .slot{
   position:absolute;inset:0;z-index:1;
   background:
@@ -214,13 +224,42 @@ def markup(text: str) -> str:
     return re.sub(r"\*(.+?)\*", r"<em>\1</em>", escaped)
 
 
+def photo_path(slide: dict) -> Path | None:
+    """Das eigene Bild einer Kachel, sobald es in quellen/ liegt."""
+    name = slide.get("foto")
+    if not name:
+        return None
+    path = QUELLEN / name
+    return path if path.exists() else None
+
+
+def embed(path: Path) -> str:
+    """Bild als Datenzeile einbetten, damit Chromium keine Datei laden muss."""
+    with Image.open(path) as img:
+        img = img.convert("RGB")
+        # Grosszuegig auf die doppelte Kachelbreite begrenzen, mehr bringt nichts.
+        if img.width > WIDTH * SCALE:
+            img = img.resize((WIDTH * SCALE, round(img.height * WIDTH * SCALE / img.width)),
+                             Image.LANCZOS)
+        buf = io.BytesIO()
+        img.save(buf, "JPEG", quality=94, optimize=True)
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
 def slide_html(slide: dict, uid: int) -> str:
     theme = slide.get("theme", "dark")
     if slide.get("_overlay"):
         theme += " overlay"
     parts = []
 
-    if slide.get("slot"):
+    photo = photo_path(slide)
+    if photo:
+        pos = slide.get("bildlage", "center")
+        parts.append(
+            f'<div class="media" style="--pos:{pos}"><img src="{embed(photo)}" alt="">'
+            f'<div class="scrim"></div></div>'
+        )
+    elif slide.get("slot"):
         label = slide["slot"].replace("|", "<br>")
         parts.append(f'<div class="slot"><div class="hintbox">{label}</div></div>')
 
@@ -309,7 +348,8 @@ def main() -> None:
     for post in POSTS:
         for index, slide in enumerate(post["slides"], start=1):
             uid += 1
-            prefix = "VORLAGE_" if slide.get("slot") else ""
+            offen = bool(slide.get("slot")) and not photo_path(slide)
+            prefix = "VORLAGE_" if offen else ""
             name = f'{prefix}post-{post["nr"]:02d}-{index}-{post["slug"]}.png'
             source = WORK / f"{uid:03d}.html"
             source.write_text(slide_html(slide, uid), encoding="utf-8")
@@ -320,7 +360,7 @@ def main() -> None:
 
             # Fuer Foto- und Screenshot-Kacheln zusaetzlich eine freigestellte
             # Auflage, die sich in jedem Bildprogramm ueber das eigene Bild legen laesst.
-            if slide.get("slot"):
+            if offen:
                 overlay = {k: v for k, v in slide.items() if k != "slot"}
                 overlay["_overlay"] = True
                 source_o = WORK / f"{uid:03d}-overlay.html"
